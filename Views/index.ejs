@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="Akshay">
+<head>
+    <meta name="description" content="This is home page where information about me is displayed. The links to my resume, conatct information, image and 
+          interests and hobbies.">
+    <meta name="author" content="Akshay Deshpande">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <meta charset="utf-8">
+    <title><%= pageTitle %></title>
+    <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel='stylesheet' href='/css/TweetList.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-resource.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-sanitize.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+    <script src="//platform.twitter.com/widgets.js"></script>
+    <script src="/scripts/TweetList.js"></script>
+</head>
+<body style="background-color : #F5F5F5">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Akshay Deshpande</a>
+            </div>
+            <ul class="nav navbar-nav" id="myTabs">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/feedback">Feedback</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" ng-controller="TweetList">
+        <!--<div class="alert alert-info alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Upcoming!</strong> Sentiment analysis on the searched mentions based on the tweets.
+        </div>-->
+        <div class="col-sm-6 col-sm-offset-3">
+            <div style="margin-top:40px;">
+                <form class="input-group" ng-submit="getTweets()">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" class="form-control" placeholder="Type here.." ng-model="username">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Get Tweets</button>
+                        </span>
+                 </form>
+                <span style="margin-left: 35%;"><small><i>You can try like: <b>MLB</b></i></small></span>
+            </div>
+        </div>
+            <div class="row clearfix">
+                <div class="col-lg-12">
+
+                    <div id="tweet-list">
+
+                        <!-- this div will repeat for every tweet object in the array using a template-expanding directive -->
+                        <div ng-repeat="tweet in tweetsResult" class="tweet-item">
+
+                            <!-- sanitized HTML binding -->
+                            <div ng-bind-html="tweet.oEmbed.html"></div>
+
+                            <!-- binding to Tweet source property -->
+                            <div class="tweet-details">
+                                Tweeted from <span ng-bind-html="tweet.source"></span>
+
+                                <!-- play around with rendering different Tweet properties -->
+                                <!-- <p>{{tweet.user.screen_name}}</p> -->
+                                <!-- <p>{{tweet.text}}</p> -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!--<div class="row">
+                <div class="col-lg-12">
+
+                    <div class="col-sm-12 col-sm-offset-5">
+                        <button type="button" class="load-more-btn btn btn-default" ng-click="getMoreTweets()">Get More Tweets</button>
+                    </div>
+                    
+
+                </div>
+            </div>-->
+
+        </div>
+    <!--</div>-->
+    <script>$('.nav.navbar-nav > li').on('click', function (e) {
+    $('.nav.navbar-nav > li').removeClass('active');
+    $(this).addClass('active');});</script>
+</body>
+      
+</html>

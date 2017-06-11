@@ -1,0 +1,22 @@
+﻿[
+  {
+    "name": "Akshay Deshpande",
+    "Degree": "M.S.",
+    "Area": "Computer Science",
+    "University": "Illinois Institute of Technology",
+    "link": "http://web.iit.edu/",
+    "Graduation_year": "2016",
+    "End_Semester": "Fall",
+    "other_degree": "B.Tech",
+    "Area_other": "Computer Science",
+    "Uni_other": "Shri Guru Gobind Singhji Institute of Engineering and Technology",
+    "year_other": "2012",
+    "link_other": "https://www.sggs.ac.in/",
+    "e_mail": "akshaytanoor@gmail.com",
+    "mobile_number": "3126478558",
+    "linkedin_url": "https://www.linkedin.com/in/akshaydeshpande64",
+    "subs": [ "Machine Learning", "Data Mining", "Design and Analysis of Algorithms" ],
+    "hobbies": [ "Road Trips", "Swimming", "TV" ]
+
+  }
+]

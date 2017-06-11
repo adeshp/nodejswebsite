@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="This is home page where information about me is displayed. The links to my resume, conatct information, image and
+          interests and hobbies.">
+    <meta name="author" content="Akshay Deshpande">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <meta charset="utf-8">
+    <title><%= pageTitle %></title>
+    <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/modal.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/scripts/infoScript.js"></script>
+</head>
+<body style="background-color : #F5F5F5">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Akshay Deshpande</a>
+            </div>
+            <ul class="nav navbar-nav" id="myTabs">
+                <li><a href="/">Home</a></li>
+                <li><a href="/feedback">Feedback</a></li>
+                <li class="active"><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="col-md-2 left-section" style="background : #fff; margin-left : 50px; margin-top : 25px; border-radius: 2px; box-shadow: 0px 1px 2px;">
+        <img id="myImg" class="img-thumbnail" src="/images/profile.jpg" alt="Akshay">
+        <div id="myModal" class="modal">
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+    </div>
+    <div class="col-md-7 center-section" style="background : #fff; margin-left : 30px; margin-top : 25px; border-radius: 2px; box-shadow: 0px 1px 2px;">
+        <div class="list-group1"></div>
+    </div>
+
+
+
+
+
+    <script>
+        $('.nav.navbar-nav > li').on('click', function (e) {
+            $('.nav.navbar-nav > li').removeClass('active');
+            $(this).addClass('active');
+        });
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="This is feedback page where users can submit the feedback. The links to my resume, conatct information, image and
+          interests and hobbies.">
+    <meta name="author" content="Akshay Deshpande">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <meta charset="utf-8">
+    <title><%= pageTitle %></title>
+    <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/modal.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/scripts/feedBackScript.js"></script>
+</head>
+<body style="background-color : #F5F5F5">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Akshay Deshpande</a>
+            </div>
+            <ul class="nav navbar-nav" id="myTabs">
+                <li ><a href="/">Home</a></li>
+                <li class="active"><a href="/feedback">Feedback</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="col-md-4 left-section" style="background : #fff; margin-left : 50px; margin-top : 25px; border-radius: 2px; box-shadow: 0px 1px 2px;">
+        <div><h1 class="feedback-form-title" style="">Send me feedback</h1></div>
+        <form class="feedback-form" id="feedback_form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" class="form-control" id="name" required placeholder="Full Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" required placeholder="email@domain.com" />
+                    </div>
+                </div>
+            <label>Feedback</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="radio" name="Like" id="good" value="good" style="position: absolute; left:-9999px;" />
+                            <label for="good"><img src="/images/f_good.png" alt="Good" data-toggle="tooltip" title="Keep Working" width=30/></label>
+                        &nbsp;&nbsp;
+                        <input type="radio" name="Like" id="avg" value="avg" style="position:absolute; left:-9999px" />
+                            <label for="avg"><img src="/images/f_avg.png" alt="Average" data-toggle="tooltip" title="Needs Improvement" width=30></label>
+                        &nbsp;&nbsp;
+                        <input type="radio" name="Like" id="bad" value="bad"style="position:absolute; left:-9999px" />
+                            <label for="bad"><img src="/images/f_bad.png" alt="Bad" data-toggle="tooltip" title="Below Average" width=30/></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        <textarea type="text" class="form-control" id="msg" required placeholder="You should have done like this...." rows="3"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info" value="Submit" style="margin-left:295px; width:100px; font-size-adjust:initial;
+                    font-size:medium">
+                    Submit&nbsp;<span class="glyphicon glyphicon-send"></span>
+                </button>
+        </form>
+        <br />
+     </div>
+
+    <div class="col-md-6 center-section" style="background : #fff; margin-left : 30px; margin-top : 25px; border-radius: 2px; box-shadow: 0px 1px 2px;">
+        <div><h1>Recent feedbacks</h1></div>
+        <div class="feedback-messages"></div>
+    </div>
+    <script>$('.nav.navbar-nav > li').on('click', function (e) {
+    $('.nav.navbar-nav > li').removeClass('active');
+    $(this).addClass('active');});
+    </script>
+</body>
+</html>
