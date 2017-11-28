@@ -13,6 +13,7 @@ app.use(require('./routes/api'));
 app.use(require('./routes/infoapi'));
 app.use(require('./routes/about'));
 app.use(require('./routes/tweets'));
+app.use(require('./routes/portfolio'));
 
 var tendoServer = app.listen(app.get('port'), function () {
     console.log('Listening on ' + app.get('port'));

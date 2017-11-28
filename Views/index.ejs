@@ -8,8 +8,6 @@
     <meta charset="utf-8">
     <title><%= pageTitle %></title>
     <link rel="shortcut icon" href="/images/fav.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/css/modal.css" />
-    <link rel="stylesheet" href="/css/index.css" />
     <link rel='stylesheet' href='/css/TweetList.css' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -64,13 +62,13 @@
                             <div ng-bind-html="tweet.oEmbed.html"></div>
 
                             <!-- binding to Tweet source property -->
-                            <div class="tweet-details">
-                                Tweeted from <span ng-bind-html="tweet.source"></span>
+                            <!-- <div class="tweet-details">
+                                Tweeted from <span ng-bind-html="tweet.source"></span> -->
 
                                 <!-- play around with rendering different Tweet properties -->
                                 <!-- <p>{{tweet.user.screen_name}}</p> -->
                                 <!-- <p>{{tweet.text}}</p> -->
-                            </div>
+                            <!-- </div> -->
                         </div>
 
                     </div>
@@ -90,10 +88,6 @@
             </div>-->
 
         </div>
-    <!--</div>-->
-    <script>$('.nav.navbar-nav > li').on('click', function (e) {
-    $('.nav.navbar-nav > li').removeClass('active');
-    $(this).addClass('active');});</script>
 </body>
       
 </html>

@@ -1,0 +1,58 @@
+﻿[
+  {
+    "Id": "1",
+    "Name": "TicTacToe",
+    "Description": "This is a console game off Tic Tac Toe for two players. Two players Player1 and Player2 can play the Tic-Tac-Toe. You can also change the size of the board. default is 3 x 3. Finally you can define the winning sequence two. But you may want to give proper sequence length.",
+    "TechnologyStack": "c#",
+    "GithubLink": "https://github.com/adeshp/TicTacToe",
+    "Image": ""
+  },
+  {
+    "Id": "2",
+    "Name": "Personal Website",
+    "Description": "This is a personal portfolio webiste to give information about what I have worked on. This can also be found in LinkedIn and Angel.co",
+    "TechnologyStack": "HTML, CSS, Javascript, NodeJS",
+    "GithubLink": "https://github.com/adeshp/nodejswebsite",
+    "Image": ""
+  },
+  {
+    "Id": "3",
+    "Name": "Algorithms and Data Structures",
+    "Description": "Some of the problems applying algorithms and data structures.",
+    "TechnologyStack": "Java",
+    "GithubLink": "https://github.com/adeshp/interviewprep",
+    "Image": ""
+  },
+  {
+    "Id": "4",
+    "Name": "Regression Analysis on IMDB Data",
+    "Description": "The regression analysis performed on IMDB Movie Data for predict the IMDB score for a movie. Some of the models pplied are linear regression and lasso regression.",
+    "TechnologyStack": "Python - SciKit Learn",
+    "GithubLink": "https://github.com/adeshp/RegressionAnalysis",
+    "Image": ""
+  },
+  {
+    "Id": "5",
+    "Name": "Email Text Anamoly Detection",
+    "Description": "This is a study project to learn various data mining techniques. The project attempts to read large set of email-text and applies Ngram technique to devise a metric for detecting word anamolies.",
+    "TechnologyStack": "Python",
+    "GithubLink": "https://github.com/thirumalrao/emailanomalydetection",
+    "Image": ""
+  },
+  {
+    "Id": "6",
+    "Name": "Introduction To Google App Engine",
+    "Description": "The project is a introduction to Google's cloud offerings. The project uses storage facilities like memcache and buckets to store and retrieve files.",
+    "TechnologyStack": "Java - Google App Engine Client",
+    "GithubLink": "https://github.com/adeshp/GoogleAppEngine",
+    "Image": ""
+  },
+  {
+    "Id": "7",
+    "Name": "On promise vs cloud",
+    "Description": "This is project tries to compare the costs of Amazon's AWS infrastructure vs Traditional company based infra. The comparison is based on the costs and offerings available from the AWS EC2 compute at that time.",
+    "TechnologyStack": "Amazon AWS",
+    "GithubLink": "https://github.com/adeshp/CloudvsTraditionalInfrastrucureComparison",
+    "Image": ""
+  }
+]
