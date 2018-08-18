@@ -13,6 +13,8 @@
     "express": "^4.15.3",
     "nodedev": "0.0.1",
     "reload": "^1.1.5",
-    "twit": "^2.2.5"
+    "twit": "^2.2.5",
+    "winston": "^2.0.0",
+    "express-winston": "^2.0.0"
   }
 }
