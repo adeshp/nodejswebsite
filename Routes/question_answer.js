@@ -37,9 +37,9 @@ router.get('/question_answer', function (req, res) {
             //return;
             var arr_map = {};
             arr_map['A'] = 1;
-            arr_map['B'] = 2;
+            arr_map['D'] = 2;
             arr_map['C'] = 3;
-            arr_map['D'] = 4;
+            arr_map['B'] = 4;
 
 
             var result = []; result.push(string_tobe_checked);
@@ -56,9 +56,9 @@ router.get('/question_answer', function (req, res) {
                         if (arr_map[string_tobe_checked[j-1]] == first_char_value) {
                             c = '=';
                         } else if (first_char_value < arr_map[string_tobe_checked[j-1]]) {
-                            c = '<';
-                        } else {
                             c = '>';
+                        } else {
+                            c = '<';
                         }
                         new_str.push(c);
 
@@ -73,7 +73,8 @@ router.get('/question_answer', function (req, res) {
                 result.push(word);
                 
             });
-            res.send(result.join(" "));
+            //res.send(result.join(" "));
+            res.send(JSON.stringify(result));
    
         }
         else {
