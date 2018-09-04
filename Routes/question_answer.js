@@ -28,37 +28,144 @@ router.get('/question_answer', function (req, res) {
         } else if (req.query.d.includes('eligibility to work in the US')) {
             res.send('Yes. I am on F-1 OPT Extension and able to work till Feb 2020. My H1-B with my current employer is being processed.');
         } else if (req.query.d.includes('solve this puzzle')) {
-            var index = req.query.d.split(': ');
-            var puzzle_solved_string = "ADBC"; // for record purpose
-            var arr_s = index[1].split(" ");
-            var string_tobe_checked = arr_s[0];
-            arr_s.shift();
-            //res.send(JSON.stringify(arr));
-            //return;
-            var arr_map = {};
-            arr_map['A'] = 1;
-            arr_map['D'] = 2;
-            arr_map['C'] = 3;
-            arr_map['B'] = 4;
+            var s = decodeURI(req.query.d);
 
+            var return_value = {};
+        
+            var index = s.split("\n");
+            var string_tobe_checked = index[1].trim();
+            //return_value['string_tobe_checked'] = string_tobe_checked;
+            var arr_s = index.slice(2, 6);
 
-            var result = []; result.push(string_tobe_checked);
+            //return_value['array'] = arr_s;
+            // create the sort order
+
+            var char_array = ['A', 'B', 'C', 'D'];
+
+            var puzzle_array = {};
+            var temp_array = {};
+
+            //var ele = arr_s[1];
+
+            //return_value['ele'] = ele;
+
+            arr_s.forEach(function (ele)
+            {
+                for (var i = 1; i < ele.length; i++)
+                {
+                    if (ele[i] == '_' || ele[i] == '=') {
+                        continue;
+                    }
+                   
+                    var char = char_array[i-1]; // ege. A___<, means A < D
+                    //return_value['i_ch'] = char;
+                    //return_value['start_char'] = ele[0];
+                    var start_char = ele[0];
+                    switch (ele[i])
+                    {
+                        case '<':// start_char < char,
+                            if (Object.keys(puzzle_array).length === 0) { // intial comparison so we can push
+                                puzzle_array[start_char] = 0;
+                                puzzle_array[char] = 1;
+                                
+                            } 
+                            else {
+                                // array conatins the elements so we need to check where we need to put those
+                                // values
+
+                                if (char in puzzle_array) { //exists then add them accordingly
+                                    var temp = puzzle_array[char];
+                                    puzzle_array[start_char] = temp - 1;
+                                } else if (start_char in puzzle_array) {
+                                    var temp = puzzle_array[start_char];
+                                    puzzle_array[char] = temp + 1;
+                                } else {
+                                    //add them in temp array
+                                    temp_array[start_char] = 0;
+                                    temp_array[char] = 1;
+                                }
+                            }
+
+                            break;
+                        case '>':// start_char > char
+                            if (Object.keys(puzzle_array).length === 0) { // intial compariosn so we can push
+                                puzzle_array[char] = 0;
+                                puzzle_array[start_char] = 1;
+                                
+                            }
+                            else {
+                                // array conatins the elements so we need to check where we need to put those
+                                // values
+
+                                if (start_char in puzzle_array) { //exists then add them accordingly
+                                    var temp = puzzle_array[start_char];
+                                    puzzle_array[char] = temp - 1;
+                                } else if (char in puzzle_array) {
+                                    var temp = puzzle_array[char];
+                                    puzzle_array[start_char] = temp + 1;
+                                } else {
+                                    //add them in temp array
+                                    temp_array[char] = 0;
+                                    temp_array[start_char] = 1;
+                                }
+                                    
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+
+            //return_value['before_merge'] = puzzle_array;
+
+           // return_value['temp_obj'] = temp_array;
+
+            if (Object.keys(temp_array).length === 0) {
+                var temp_key = null;
+                var temp_value = null;
+                for (var t in temp_array) {
+                    if (t in puzzle_array) {
+                        temp_key = t;
+                        temp_value = puzzle_array[t];
+                        break;
+                    }
+                }
+
+                // got the intersection of the two maps
+                // compare their values
+
+                for (var t in temp_array) {
+                    if (temp_array[t] < temp_value) { // this char must be left of the temp in puzzel_array
+                        var or_val = puzzle_array[temp_key];
+                        puzzle_array[t] = or_val - 1;
+
+                    } else if (temp_array[t] > temp_value) {
+                        var or_val = puzzle_array[temp_key];
+                        puzzle_array[t] = or_val + 1;
+                    }
+                }
+            }
+
+            // puzzle map is ready now, compare each string and fill the symbols
+
+            //return_value['after_merge'] = puzzle_array;
+
+            var result = []; result.push("+".concat(string_tobe_checked));
 
             arr_s.forEach(function (ele) {
-                var first_char_value = arr_map[ele[0]];
-                //res.send(JSON.stringify(first_char_valu(ele) );
-                //return;
+                var first_char_value = puzzle_array[ele[0]];
+                
                 var new_str = []; new_str.push(ele[0]);
                 for (var j = 1; j < ele.length; j++){
-                    //res.send(JSON.stringify(ele+arr_map[string_tobe_checked[j-1]]));
+             
                     if (ele[j] == '_' || ele[j] == '-') { // if it's not already evaluated
-                        var c = ele[j];
-                        if (arr_map[string_tobe_checked[j-1]] == first_char_value) {
+                        if (puzzle_array[string_tobe_checked[j - 1]] == first_char_value) {
                             c = '=';
-                        } else if (first_char_value < arr_map[string_tobe_checked[j-1]]) {
-                            c = '>';
-                        } else {
+                        } else if (first_char_value < puzzle_array[string_tobe_checked[j-1]]) {
                             c = '<';
+                        } else {
+                            c = '>';
                         }
                         new_str.push(c);
 
@@ -69,12 +176,17 @@ router.get('/question_answer', function (req, res) {
 
                 var word = new_str.join("");
 
-
+               
                 result.push(word);
                 
             });
-            //res.send(result.join(" "));
-            res.send(JSON.stringify(result));
+
+            //return_value['result'] = result.join(" \n");
+
+             res.send(encodeURI(result.join(" \n")));
+            //res.send(JSON.stringify(result));
+
+            //res.send(JSON.stringify(return_value));
    
         }
         else {
