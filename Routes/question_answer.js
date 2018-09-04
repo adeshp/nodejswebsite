@@ -151,7 +151,7 @@ router.get('/question_answer', function (req, res) {
 
             //return_value['after_merge'] = puzzle_array;
 
-            var result = []; result.push("+".concat(string_tobe_checked));
+            var result = []; result.push(" ".concat(string_tobe_checked));
 
             arr_s.forEach(function (ele) {
                 var first_char_value = puzzle_array[ele[0]];
@@ -183,7 +183,7 @@ router.get('/question_answer', function (req, res) {
 
             //return_value['result'] = result.join(" \n");
 
-             res.send(encodeURI(result.join(" \n")));
+             res.send(result.join(" \n"));
             //res.send(JSON.stringify(result));
 
             //res.send(JSON.stringify(return_value));
